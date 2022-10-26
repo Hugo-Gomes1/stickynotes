@@ -1,14 +1,15 @@
 import Note from "./Note";
 import NewNote from "./NewNote";
 
-function NotesGroup({ notes, handleNewNote}) {
+function NotesGroup({ notes, handleNewNote, handleDeleteNote}) {
   return (
     <div className="notes-group">
       {notes.map((note) => (
         <Note 
-        key={note.id} 
+        id={note.id} 
         text={note.text}
         date={note.date}
+        handleDeleteNote = {handleDeleteNote}
         />
       ))}
       <NewNote handleNewNote={handleNewNote} />
