@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+}
+
 .container {
   max-width: 960px;
   margin-right: auto;
@@ -86,6 +91,6 @@ textarea:focus {
   background-color: lightgray;
 }
 
-.search input:focus{
+.search input:focus {
   outline: none;
 }
