@@ -8,34 +8,38 @@ function App() {
   const [notes, setNotes] = useState([
     {
       id: nanoid(),
-      text: "this is my first note",
+      title: "this is my first note",
+      text: "this is text one",
       date: "26/10/2022",
     },
     {
       id: nanoid(),
-      text: "this is my second note",
+      title: "this is my second note",
+      text: "this is text two",
       date: "27/10/2022",
     },
     {
       id: nanoid(),
-      text: "this is my third note",
+      title: "this is my third note",
+      text: "this is text three",
       date: "28/10/2022",
     },
   ]);
 
-  const [searchText, setSearchText] = useState('');
-  <Search handleSearchNote={setSearchText}/>
+  const [searchTitle, setSearchTitle] = useState('');
+  <Search handleSearchNote={setSearchTitle}/>
 
-  const newNote = (text) =>{
+  const newNote = (title, text) => {
     const date = new Date();
-    const newNote={
+    const newNote = {
       id: nanoid(),
-      text:text,
-      date: date.toLocaleDateString()
-    }
+      title: title,
+      text: text,
+      date: date.toLocaleDateString(),
+    };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
-  }
+  };
 
   const deleteNote = (id) => {
     const newNotes = notes.filter((note)=> note.id !== id)
@@ -45,9 +49,9 @@ function App() {
   return (
     <div className="container">
       <Header/>
-      <Search handleSearchNote={setSearchText}/>
+      <Search handleSearchNote={setSearchTitle}/>
       <NotesGroup 
-      notes={notes.filter((note)=>note.text.toLowerCase().includes(searchText))}
+      notes={notes.filter((note)=>note.title.toLowerCase().includes(searchTitle))}
       handleNewNote={newNote}
       handleDeleteNote={deleteNote}
       />

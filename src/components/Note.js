@@ -1,13 +1,26 @@
 import { RiDeleteBinFill, RiEdit2Fill } from "react-icons/ri";
 
-function Note({id,text,date, handleDeleteNote}) {
+function Note({ id, title, text, date, handleDeleteNote }) {
   return (
     <div className="note">
-      <span>{text}</span>
+      <span>
+        <div>
+          <b>{title}</b>
+        </div>
+
+        <span>{text}</span>
+      </span>
+
       <div className="note-footer">
         <small>{date}</small>
-        <RiDeleteBinFill onClick={()=> handleDeleteNote(id)} className="delete-icon" size="1.3em" />
-        <RiEdit2Fill className="edit-icon" size="1.3em" />
+        <span>
+          <RiDeleteBinFill
+            onClick={() => handleDeleteNote(id)}
+            className="icons"
+            size="1.3em"
+          />
+          <RiEdit2Fill className="icons" size="1.3em" />
+        </span>
       </div>
     </div>
   );
