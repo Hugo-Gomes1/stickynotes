@@ -1,9 +1,16 @@
 import { useState } from "react";
 
-function NewNote({ handleNewNote }) {
+function EditNote({handleEditNote,id,title,text,date})  {
 
-  const [noteTitle, setNoteTitle] = useState("");
-  const [noteText, setNoteText] = useState("");
+
+
+   
+    const [noteTitle, setNoteTitle] = useState(title);
+    const [noteText, setNoteText] = useState(text);
+   
+
+
+
 
   const handleChangeTitle = (event) => {
     setNoteTitle(event.target.value);
@@ -13,15 +20,26 @@ function NewNote({ handleNewNote }) {
     setNoteText(event.target.value);
   };
 
+
+
+  
+
+
   const handleSaveClick = () => {
+
     if (noteTitle.trim().length > 0) {
-      handleNewNote(noteTitle, noteText);
-      setNoteTitle('');
-      setNoteText('');
+      handleEditNote(id,noteTitle, noteText,date);
+      setNoteTitle("");
+      setNoteText("");
     }
+    
   };
+
+
+
+
   return (
-    <div className="note new">
+    <div className="note edit">
       <textarea
         placeholder="Type to add a title..."
         value={noteTitle}
@@ -43,5 +61,6 @@ function NewNote({ handleNewNote }) {
       </div>
     </div>
   );
-}
-export default NewNote;
+};
+
+export default EditNote;

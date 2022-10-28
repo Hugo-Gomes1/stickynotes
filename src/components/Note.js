@@ -1,6 +1,6 @@
 import { RiDeleteBinFill, RiEdit2Fill } from "react-icons/ri";
 
-function Note({ id, title, text, date, handleDeleteNote }) {
+function Note({ id, title, text, date, handleDeleteNote,handleEditNote }) {
   return (
     <div className="note">
       <span>
@@ -19,7 +19,7 @@ function Note({ id, title, text, date, handleDeleteNote }) {
             className="icons"
             size="1.3em"
           />
-          <RiEdit2Fill className="icons" size="1.3em" />
+          <RiEdit2Fill className="icons" onClick={()=> handleEditNote(id,title,text,date)} size="1.3em" />
         </span>
       </div>
     </div>

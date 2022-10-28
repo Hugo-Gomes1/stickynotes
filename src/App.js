@@ -26,6 +26,33 @@ function App() {
     },
   ]);
 
+
+const editNote = (id,title,text,date) => { //1º É DEFINIDA AQUI
+  
+  
+  const editNote = {
+    id:id,
+    title:title,
+    text:text,
+    date:date
+  }
+
+  console.log(id,title,text,date)
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
   const [searchTitle, setSearchTitle] = useState('');
   <Search handleSearchNote={setSearchTitle}/>
 
@@ -54,6 +81,10 @@ function App() {
       notes={notes.filter((note)=>note.title.toLowerCase().includes(searchTitle))}
       handleNewNote={newNote}
       handleDeleteNote={deleteNote}
+      
+        handleEditNote={editNote} //2º PASSAMOS PARA O NOTESGROUP
+      
+      
       />
     </div>
   );

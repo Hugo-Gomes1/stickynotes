@@ -35,6 +35,10 @@ code {
   background-color: #67d7cc;
 }
 
+.note.edit {
+  background-color:rgb(179, 214, 202);
+}
+
 textarea {
   border: none;
   resize: none;
