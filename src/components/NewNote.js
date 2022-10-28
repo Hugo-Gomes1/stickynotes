@@ -26,7 +26,7 @@ function NewNote({ handleNewNote }) {
         placeholder="Type to add a title..."
         value={noteTitle}
         onChange={handleChangeTitle}
-        maxlength="50"
+        maxLength="50"
       ></textarea>
       <textarea
         rows="8"
@@ -34,7 +34,7 @@ function NewNote({ handleNewNote }) {
         placeholder="Type to add text..."
         value={noteText}
         onChange={handleChangeText}
-        maxlength="200"
+        maxLength="200"
       ></textarea>
       <div className="note-footer">
         <button className="save" onClick={handleSaveClick}>
