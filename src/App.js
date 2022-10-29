@@ -8,22 +8,22 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   const editNote = (id, title, text) => {
-    console.log(id)
+   
     const editNote = notes.map((note) => {
       if (id === note.id) {
         return {
           ...note,
           title: title,
           text: text,
-          date: new Date(),
+          date: new Date().toISOString(),
         };
       }
       return note;
     });
-    console.log(editNote)
+  
     setNotes(editNote);
   };
-  
+
   const [searchTitle, setSearchTitle] = useState("");
   <Search handleSearchNote={setSearchTitle} />;
 
@@ -44,7 +44,7 @@ function App() {
       id: nanoid(),
       title: title,
       text: text,
-      date: new Date(),
+      date: new Date().toISOString(),
     };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);

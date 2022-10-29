@@ -13,7 +13,7 @@ function EditingTemplate({ id, title, text, handleEditNote, setEditing }) {
     setNoteText(event.target.value);
   };
 
-  const jujuba = (id, noteText, text) => {
+  const endEdit = (id, noteText, text) => {
     handleEditNote(id, noteText, text);
     setEditing(false);
   };
@@ -35,8 +35,15 @@ function EditingTemplate({ id, title, text, handleEditNote, setEditing }) {
         maxLength="200"
       ></textarea>
       <div className="note-footer">
-        <button onClick={() => setEditing(false)}>Cancel</button>
-        <button onClick={() => jujuba(id, noteTitle, noteText)}>Save</button>
+        <button className="save" onClick={() => setEditing(false)}>
+          Cancel
+        </button>
+        <button
+          className="save"
+          onClick={() => endEdit(id, noteTitle, noteText)}
+        >
+          Save
+        </button>
       </div>
     </div>
   );
@@ -58,7 +65,7 @@ function ViewTemplate({ id, title, text, date, handleDeleteNote, setEditing }) {
       </span>
 
       <div className="note-footer">
-        <small>{date.toLocaleString()}</small>
+        <small>{new Date(date).toLocaleString()}</small>
         <span>
           <RiDeleteBinFill
             onClick={() => handleDeleteNote(id)}
