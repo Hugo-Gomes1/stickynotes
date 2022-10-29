@@ -26,65 +26,53 @@ function App() {
     },
   ]);
 
+  const editNote = (id, title, text) => {
+    console.log(id)
+    const editNote = notes.map((note) => {
+      if (id === note.id) {
+        return {
+          ...note,
+          title: title,
+          text: text,
+          date: new Date(),
+        };
+      }
+      return note;
+    });
+    console.log(editNote)
+    setNotes(editNote);
+  };
 
-const editNote = (id,title,text,date) => { //1º É DEFINIDA AQUI
-  
-  
-  const editNote = {
-    id:id,
-    title:title,
-    text:text,
-    date:date
-  }
-
-  console.log(id,title,text,date)
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-  const [searchTitle, setSearchTitle] = useState('');
-  <Search handleSearchNote={setSearchTitle}/>
+  const [searchTitle, setSearchTitle] = useState("");
+  <Search handleSearchNote={setSearchTitle} />;
 
   const newNote = (title, text) => {
-    const date = new Date();
     const newNote = {
       id: nanoid(),
       title: title,
       text: text,
-      date: date.toLocaleDateString(),
+      date: new Date(),
     };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
   };
 
   const deleteNote = (id) => {
-    const newNotes = notes.filter((note)=> note.id !== id)
+    const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
-  }
+  };
 
   return (
     <div className="container">
-      <Header/>
-      <Search handleSearchNote={setSearchTitle}/>
-      <NotesGroup 
-      notes={notes.filter((note)=>note.title.toLowerCase().includes(searchTitle))}
-      handleNewNote={newNote}
-      handleDeleteNote={deleteNote}
-      
+      <Header />
+      <Search handleSearchNote={setSearchTitle} />
+      <NotesGroup
+        notes={notes.filter((note) =>
+          note.title.toLowerCase().includes(searchTitle)
+        )}
+        handleNewNote={newNote}
+        handleDeleteNote={deleteNote}
         handleEditNote={editNote} //2º PASSAMOS PARA O NOTESGROUP
-      
-      
       />
     </div>
   );
