@@ -1,30 +1,11 @@
 import NotesGroup from "./components/NotesGroup";
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Search from "./components/Search";
 import Header from "./components/Header";
 
 function App() {
-  const [notes, setNotes] = useState([
-    {
-      id: nanoid(),
-      title: "this is my first note",
-      text: "this is text one",
-      date: "26/10/2022",
-    },
-    {
-      id: nanoid(),
-      title: "this is my second note",
-      text: "this is text two",
-      date: "27/10/2022",
-    },
-    {
-      id: nanoid(),
-      title: "this is my third note",
-      text: "this is text three",
-      date: "28/10/2022",
-    },
-  ]);
+  const [notes, setNotes] = useState([]);
 
   const editNote = (id, title, text) => {
     console.log(id)
@@ -42,9 +23,21 @@ function App() {
     console.log(editNote)
     setNotes(editNote);
   };
-
+  
   const [searchTitle, setSearchTitle] = useState("");
   <Search handleSearchNote={setSearchTitle} />;
+
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
+
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
+  }, [notes]);
 
   const newNote = (title, text) => {
     const newNote = {
