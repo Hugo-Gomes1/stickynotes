@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Search from "./components/Search";
 
 function App() {
-
   const [notes, setNotes] = useState([]);
   const [searchTitle, setSearchTitle] = useState("");
 
@@ -39,8 +38,6 @@ function App() {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
-
-
 
   useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem("app-data"));
