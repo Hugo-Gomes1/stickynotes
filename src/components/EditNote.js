@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-function NewNote({ handleNewNote }) {
-
-  const [noteTitle, setNoteTitle] = useState("");
-  const [noteText, setNoteText] = useState("");
+function EditNote({ id, title, text, handleEditNote, setEditing }) {
+  const [noteText, setNoteText] = useState(text);
+  const [noteTitle, setNoteTitle] = useState(title);
 
   const handleChangeTitle = (event) => {
     setNoteTitle(event.target.value);
@@ -13,35 +12,40 @@ function NewNote({ handleNewNote }) {
     setNoteText(event.target.value);
   };
 
-  const handleSaveClick = () => {
+  const saveEdit = (id, noteTitle, noteText) => {
     if (noteTitle.trim().length > 0) {
-      handleNewNote(noteTitle, noteText);
-      setNoteTitle('');
-      setNoteText('');
+      handleEditNote(id, noteTitle, noteText);
+      setEditing(false);
     }
   };
+
   return (
     <div className="note new">
       <textarea
-        placeholder="Type to add a title..."
         value={noteTitle}
         onChange={handleChangeTitle}
-        maxLength="50"
+        maxLength="200"
       ></textarea>
       <textarea
         rows="8"
         cols="10"
-        placeholder="Type to add text..."
         value={noteText}
         onChange={handleChangeText}
         maxLength="200"
       ></textarea>
       <div className="note-footer">
-        <button className="buttons" onClick={handleSaveClick}>
+        <button className="buttons" onClick={() => setEditing(false)}>
+          Cancel
+        </button>
+        <button
+          className="buttons"
+          onClick={() => saveEdit(id, noteTitle, noteText)}
+        >
           Save
         </button>
       </div>
     </div>
   );
 }
-export default NewNote;
+
+export default EditNote;

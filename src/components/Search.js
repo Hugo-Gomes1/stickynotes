@@ -5,7 +5,7 @@ const Search = ({handleSearchNote})=> {
   return (
   <div className="search">
     <RiSearchLine className="search-icons" size="1.3em"/>
-  <input onChange={(event)=>handleSearchNote(event.target.value)} type="text" placeholder=" Type to search..."/>
+  <input onChange={(event)=>handleSearchNote(event.target.value)} type="text" placeholder=" Type to search (by title)..."/>
   </div>
   );
 }

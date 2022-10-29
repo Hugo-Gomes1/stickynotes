@@ -8,7 +8,7 @@ function NotesGroup({
   handleEditNote,
 }) {
   return (
-    //3º PASSAMOS PARA O EditNote (LINHA 9)
+   
     <div className="notes-group">
       <NewNote handleNewNote={handleNewNote} />
       {notes.map((note) => (
