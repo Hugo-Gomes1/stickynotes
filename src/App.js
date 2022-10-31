@@ -57,6 +57,7 @@ function App() {
         <h1>Notes</h1>
       </div>
       <Search handleSearchNote={setSearchTitle} />
+
       <NotesGroup
         notes={notes.filter((note) =>
           note.title.toLowerCase().includes(searchTitle)
