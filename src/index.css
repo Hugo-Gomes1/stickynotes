@@ -35,10 +35,6 @@ code {
   background-color: #67d7cc;
 }
 
-.note.edit {
-  background-color:rgb(179, 214, 202);
-}
-
 textarea {
   border: none;
   resize: none;
@@ -56,6 +52,10 @@ textarea:focus {
   padding: 5px 10px 5px 10px;
 }
 
+.buttons.save {
+  float: right;
+}
+
 .buttons:hover {
   background-color: #ededed;
   cursor: pointer;
@@ -65,21 +65,26 @@ textarea:focus {
   background-color: #f0f491;
   border-radius: 10px;
   padding: 1rem;
-  min-height: 170px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   word-wrap: break-word;
+  min-height: 170px;
 }
 
-.note-footer {
+.note-footer-show {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.note-footer-hide {
+  display: none;
+}
+
 .icons {
   cursor: pointer;
+  float: right;
 }
 
 .search {

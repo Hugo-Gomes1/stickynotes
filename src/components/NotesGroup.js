@@ -8,9 +8,9 @@ function NotesGroup({
   handleEditNote,
 }) {
   return (
-   
     <div className="notes-group">
       <NewNote handleNewNote={handleNewNote} />
+
       {notes.map((note) => (
         <Note
           key={note.id}

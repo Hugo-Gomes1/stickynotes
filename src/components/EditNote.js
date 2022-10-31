@@ -24,7 +24,7 @@ function EditNote({ id, title, text, handleEditNote, setEditing }) {
       <textarea
         value={noteTitle}
         onChange={handleChangeTitle}
-        maxLength="200"
+        maxLength="50"
       ></textarea>
       <textarea
         rows="8"
@@ -38,7 +38,7 @@ function EditNote({ id, title, text, handleEditNote, setEditing }) {
           Cancel
         </button>
         <button
-          className="buttons"
+          className="buttons save"
           onClick={() => saveEdit(id, noteTitle, noteText)}
         >
           Save

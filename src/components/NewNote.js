@@ -37,7 +37,7 @@ function NewNote({ handleNewNote }) {
         maxLength="200"
       ></textarea>
       <div className="note-footer">
-        <button className="buttons" onClick={handleSaveClick}>
+        <button className="buttons save" onClick={handleSaveClick}>
           Save
         </button>
       </div>

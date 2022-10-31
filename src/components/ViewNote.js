@@ -1,16 +1,29 @@
-import React from "react";
-import { RiDeleteBinFill, RiEdit2Fill, RiPrinterFill } from "react-icons/ri";
+import React, { useState, useRef } from "react";
+import {
+  RiDeleteBinFill,
+  RiEdit2Fill,
+  RiPrinterFill,
+  RiEyeLine,
+  RiEyeOffLine,
+} from "react-icons/ri";
 
 function ViewNote({ id, title, text, date, handleDeleteNote, setEditing }) {
+  const [open, setOpen] = useState(true);
+
+  const detailsHandler = () => {
+    setOpen((current) => !current);
+  };
+
   const setToEditState = () => {
     setEditing(true);
   };
 
-  const printNote = React.useRef();
+  const printNote = useRef();
   const handlePrintClick = () => {
     const w = window.open();
     if (printNote.current?.innerHTML) {
-      w?.document.write(printNote.current.innerHTML);
+      w?.document.write("<h1>"+ title +"</h1>");
+      w?.document.write(text);
       w?.print();
     }
     w?.close();
@@ -21,12 +34,25 @@ function ViewNote({ id, title, text, date, handleDeleteNote, setEditing }) {
       <span ref={printNote}>
         <div>
           <b>{title}</b>
+          {open ? (
+            <RiEyeOffLine
+              className="icons"
+              size="1.3em"
+              onClick={detailsHandler}
+            />
+          ) : (
+            <RiEyeLine
+              className="icons"
+              size="1.3em"
+              onClick={detailsHandler}
+            />
+          )}
         </div>
 
-        <span>{text}</span>
+        <span>{open ? text : ""}</span>
       </span>
 
-      <div className="note-footer">
+      <div className={open ? "note-footer-show" : "note-footer-hide"}>
         <small>{new Date(date).toLocaleString()}</small>
         <span>
           <RiPrinterFill
