@@ -12,3 +12,10 @@ This challenge consisted on the development of a Notes Application in ReactJS.
 - Browser storage
 - Print note / Save as PDF
 - Search notes
+
+# Starting the app
+
+After downloading the files, the following commands are necessary to run the app:
+
+-npm install
+-npm start
