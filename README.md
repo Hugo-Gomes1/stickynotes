@@ -17,5 +17,5 @@ This challenge consisted on the development of a Notes Application in ReactJS.
 
 After downloading the files, the following commands are necessary to run the app:
 
--npm install
--npm start
+- npm install
+- npm start
