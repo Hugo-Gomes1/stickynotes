@@ -1,4 +1,4 @@
-# COCUS Frontend Code Challenge
+# Frontend Code Challenge
 
 This challenge consisted on the development of a Notes Application in ReactJS.
 
